@@ -1,7 +1,21 @@
 let connection;
-
+const { KEYS } = require('./constants');
 
 const handleUserInput = function(data) {
+  if (data === '\u0003') {
+    process.exit();
+  } else {
+    if(KEYS.hasOwnProperty(data)){
+      console.log(KEYS[data])
+      connection.write(KEYS[data])
+
+    }
+  }
+  
+}
+
+
+/* const handleUserInput = function(data) {
   if (data === '\u0003') {
     process.exit();
   } else if (data === 'w'){
@@ -19,7 +33,8 @@ const handleUserInput = function(data) {
   } else if (data === 'e'){
     connection.write('Say: LOL');
   } 
-}
+} */
+
 
 
 const setupInput = function(conn) {
