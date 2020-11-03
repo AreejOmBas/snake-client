@@ -11,6 +11,12 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8');
 
+  // print message as soon as connection is successful
+  conn.on('connect', () => {
+    console.log('Successfully connected to game server');
+    conn.write('Name: ABS')
+  });
+
   //handel data comming from the server
   conn.on('data', (input) => {
     console.log(input);
